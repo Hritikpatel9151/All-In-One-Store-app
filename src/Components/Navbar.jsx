@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
+
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   return (
@@ -8,7 +9,7 @@ const Navbar = () => {
       <nav className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <ul className="flex space-x-6 text-xl mb-4 md:mb-0">
           <li>
-            <Link to="/" className="text-textcolor text-xl hover:text-black">Home</Link>
+          <Link to="/" className="text-textcolor text-xl hover:text-[#0D121D] border-b-4 border-[#0D121D]">ALL IN ONE STORE</Link>
           </li>
         </ul>
         <div className="flex items-center space-x-2 mb-4 md:mb-0">
@@ -26,11 +27,8 @@ const Navbar = () => {
             <Link to="/login" className="text-textcolor">Login</Link>
           </li>
           <li>
-            <Link to="/logout" className="text-textcolor">Logout</Link>
+            <button onClick={logout} className="text-textcolor">Logout</button>
           </li>
-          {/* <li>
-            <Link to="/signup" className="text-textcolor">SignUp</Link>
-          </li> */}
         </ul>
       </nav>
     </div>
