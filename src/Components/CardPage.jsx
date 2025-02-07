@@ -1,7 +1,11 @@
-import {useContext} from 'react'
-import { CartContext } from '../Context/CardContext'
+// import {useContext} from 'react'
+import { useSelector,useDispatch } from 'react-redux';
+// import { CartContext } from '../Context/CardContext'
+import { removeFromCart,incrementQuantity,decrementQuantity } from '../Redux/features/CartSlice'
 const CardPage = () => {
-  const { cart, removeFromCart, updateQuantity } = useContext(CartContext)
+  // const { cart, removeFromCart } = useContext(CartContext)
+  const  dispatch  = useDispatch();
+  const {cart}=useSelector((state)=> state.cart)
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
@@ -23,18 +27,18 @@ const CardPage = () => {
               <div className="flex gap-2 items-center">
                 <button
                   className="px-3 py-1 bg-gray-200 text-black font-bold rounded"
-                  onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                  onClick={() => dispatch(decrementQuantity(item.id, Math.max(1, item.quantity - 1)))}
                 >
                   -
                 </button>
                 <span>{item.quantity}</span>
                 <button
                   className="px-3 py-1 bg-gray-200 text-black font-bold rounded"
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  onClick={() => dispatch(incrementQuantity(item.id, item.quantity + 1))}
                 >
                   +
                 </button>
-                <button className="text-red-500 font-bold" onClick={() => removeFromCart(item.id)}>
+                <button className="text-red-500 font-bold" onClick={() => dispatch(removeFromCart(item.id))}>
                   Remove
                 </button>
               </div>

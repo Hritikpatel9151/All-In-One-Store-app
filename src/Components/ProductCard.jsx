@@ -1,15 +1,19 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {AuthContext} from '../Context/AuthContext';
-import { CartContext } from '../Context/CardContext';
+// import { CartContext } from '../Context/CardContext';
+import { addToCart } from '../Redux/features/CartSlice';
 const ProductCard = ({ product }) => {
   const { user } = useContext(AuthContext);
-  const { addToCart } = useContext(CartContext);
+  // const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  
   const handleAddToWishList = () => {
     
   }
   const handleAddToCart = () => {
-     addToCart(product);
+     dispatch(addToCart(product));
     
   }
  
