@@ -27,18 +27,18 @@ const CardPage = () => {
               <div className="flex gap-2 items-center">
                 <button
                   className="px-3 py-1 bg-gray-200 text-black font-bold rounded"
-                  onClick={() => dispatch(decrementQuantity(item.id, Math.max(1, item.quantity - 1)))}
+                  onClick={() => dispatch(decrementQuantity({ id: item.id }))}
                 >
                   -
                 </button>
                 <span>{item.quantity}</span>
                 <button
                   className="px-3 py-1 bg-gray-200 text-black font-bold rounded"
-                  onClick={() => dispatch(incrementQuantity(item.id, item.quantity + 1))}
+                  onClick={() => dispatch(incrementQuantity({ id: item.id }))}
                 >
                   +
                 </button>
-                <button className="text-red-500 font-bold" onClick={() => dispatch(removeFromCart(item.id))}>
+                <button className="text-red-500 font-bold" onClick={() => dispatch(removeFromCart({ id: item.id }))}>
                   Remove
                 </button>
               </div>

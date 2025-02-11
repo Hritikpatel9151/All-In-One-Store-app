@@ -1,16 +1,19 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import {AuthContext} from '../Context/AuthContext';
+import { useDispatch ,useSelector} from 'react-redux';
+//import {AuthContext} from '../Context/AuthContext';
+
 // import { CartContext } from '../Context/CardContext';
 import { addToCart } from '../Redux/features/CartSlice';
+import {addToWishlist} from '../Redux/features/WishlistSlice';
 const ProductCard = ({ product }) => {
-  const { user } = useContext(AuthContext);
+ // const { user } = useContext(AuthContext);
   // const { addToCart } = useContext(CartContext);
   const dispatch = useDispatch();
+  const {user}=useSelector((state)=>state.auth)
   
   const handleAddToWishList = () => {
-    
+    dispatch(addToWishlist(product));
   }
   const handleAddToCart = () => {
      dispatch(addToCart(product));
@@ -41,8 +44,8 @@ const ProductCard = ({ product }) => {
         )}
         {!user && (
           <>
-          <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200"><Link to="/login">Login to Add to Cart</Link></button>
-          <button className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200"><Link to="/login">Login to Add to WishList</Link></button>
+          <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200"><Link to="/login">Add to Cart</Link></button>
+          <button className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200"><Link to="/login">Add to WishList</Link></button>
           </>
         )}
        

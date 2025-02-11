@@ -1,43 +1,21 @@
-import { useState,useContext } from "react";
-//import { useDispatch ,useSelector} from "react-redux";
-//import { login } from "../Redux/features/AuthSlice";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../Redux/features/AuthSlice";
 import { useNavigate } from "react-router-dom";
-//import users from '../MokeData/users';
-import { AuthContext } from "../Context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  //const {user} = useSelector()
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   dispatch(login({ email, password }));
-  
-  //   console.log(user);
-  //   if (user) {
-  //     switch (user.role) {
-  //       case "admin":
-  //         navigate("/admin");
-  //         break;
-  //       case "seller":
-  //         navigate("/seller");
-  //         break;
-  //       case "buyer":
-  //         navigate("/buyer");
-  //         break;
-  //       default:
-  //         navigate("/");
-  //     }
-  //   } else {
-  //     alert("Invalid credentials");
-  //   }
-  // };
-  const { login,user } = useContext(AuthContext);
-  const handleLogin = async (e) => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    await login(email, password);
+    dispatch(login({ email, password }));
+  };
+
+  useEffect(() => {
     if (user) {
       switch (user.role) {
         case "admin":
@@ -52,13 +30,8 @@ const Login = () => {
         default:
           navigate("/");
       }
-    } else {
-      alert("Invalid credentials");
-  
     }
-  };
-
-  
+  }, [user, navigate]);
 
   return (
     <div className="max-w-md mx-auto my-[80px] p-4 bg-black rounded-lg shadow-md">
