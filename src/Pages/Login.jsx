@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/features/AuthSlice";
 import { useNavigate } from "react-router-dom";
+import { toast} from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
+   
   };
 
   useEffect(() => {
@@ -20,12 +22,15 @@ const Login = () => {
       switch (user.role) {
         case "admin":
           navigate("/admin");
+          toast.success("Logged in successfully!");
           break;
         case "seller":
           navigate("/seller");
+          toast.success("Logged in successfully!");
           break;
         case "buyer":
           navigate("/buyer");
+          toast.success("Logged in successfully!");
           break;
         default:
           navigate("/");

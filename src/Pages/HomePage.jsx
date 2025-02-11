@@ -36,6 +36,10 @@ const HomePage = () => {
           </h2>
           <ProductList />
         </div>
+        <footer className="text-center p-4 bg-black text-white">
+        &copy; 2023 All In One Store. All rights reserved.
+        
+      </footer>
     </>
   );
 };

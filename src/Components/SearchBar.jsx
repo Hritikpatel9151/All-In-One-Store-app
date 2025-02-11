@@ -1,33 +1,21 @@
-import { useState, useEffect, useCallback } from "react";
-import products from '../MokeData/products'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearch } from '../Redux/features/SearchSlice';
+
 const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState(products);
-  const [filterproduct,setFiterproduct]=useState(products);
-  // const handleSearch = useCallback(
-  //   debounce()
-  // )
+  const search = useSelector((state) => state.search.search);
+  const dispatch = useDispatch();
+
   return (
-    <div>
+    <div className="flex items-center space-x-2 relative col-span-1">
       <input
         type="text"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        placeholder="Search for products..."
-        className="w-full p-2 border rounded-md"
+        onChange={(e) => dispatch(setSearch(e.target.value))}
+        value={search}
+        placeholder="Search..."
+        className="px-2 py-1 rounded-md w-[500px]"
       />
-      <ul className="mt-4">
-        {filterproduct.length > 0 ? (
-          filterproduct.map((product) => (
-            <li key={product.id} className="p-2 border-b">
-              {product.name}
-            </li>
-          ))
-        ) : (
-          <p className="text-gray-500">No products found</p>
-        )}
-      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

@@ -1,25 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { logout } from '../Redux/features/AuthSlice';
-//import { AuthContext } from '../Context/AuthContext';
 import { useDispatch, useSelector } from 'react-redux';
-//import products from '../MokeData/products';
+import { logout } from '../Redux/features/AuthSlice';
 import SearchBar from './SearchBar';
+import { toast } from 'react-hot-toast';
+import { FaHeart } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-
-  // const handleClick = () => {
-  //   console.log('Search for:', searchValue);
-    
-  // };
+  const cartCount = useSelector((state) => state.cart.cart.length);
+  const wishlistCount = useSelector((state) => state.wishlist.wishlist.length);
 
   const handleLogout = () => {
     dispatch(logout());
     navigate('/');
-    console.log('User logged out');
+    toast.success("Logout successfully!");
   };
 
   return (
@@ -30,26 +27,7 @@ const Navbar = () => {
             <Link to="/" className="text-textcolor text-xl hover:text-[#0D121D] border-b-4 border-[#0D121D]">ALL IN ONE STORE</Link>
           </li>
         </ul>
-        {/* <div className="flex items-center space-x-2 mb-4 md:mb-0">
-          <input
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            value={searchValue}
-            placeholder="Search..."
-            className="px-2 py-1 rounded-md"
-          />
-          <button
-            type="submit"
-            onClick={handleClick}
-            className="bg-white text-text px-3 py-1 rounded-full hover:bg-[#0D121D] hover:text-white transition duration-200"
-          >
-            Search
-          </button>
-        </div> */}
-        <div className="max-w-md mx-auto my-6 p-4 bg-gray-100 rounded-lg shadow-md">
-          <SearchBar/>
-        </div>
-
+        <SearchBar />
         <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-xl">
           <li>
             <Link to="/products" className="text-textcolor">Products</Link>
@@ -57,10 +35,16 @@ const Navbar = () => {
           {user && user.role === 'buyer' && (
             <>
               <li>
-                <Link to="/cart" className="text-textcolor">Cart</Link>
+                <Link to="/cart" className="text-textcolor"><FaCartShopping className='text-xl inline-block'/>
+                <sup className="text-sm font-bold bg-white text-black p-1 rounded-full">{cartCount}</sup>
+                </Link>
               </li>
               <li>
-                <Link to="/wishlist" className="text-textcolor">Wishlist</Link>
+                <Link to="/wishlist" className="text-textcolor"><FaHeart className='text-xl inline-block gap-2' />Wishlist
+                <sup className='text-sm font-bold bg-white text-black p-1 rounded-full '>
+              {wishlistCount}        
+                </sup>
+                </Link>
               </li>
             </>
           )}
