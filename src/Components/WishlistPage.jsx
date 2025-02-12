@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast} from 'react-hot-toast';
+
 import { addToCartWithWishlist, removeFromWishlist } from "../Redux/features/WishlistSlice";
 
 const WishlistPage = () => {
@@ -8,7 +10,7 @@ const WishlistPage = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCartWithWishlist(product));
-    
+     toast.success("Product added to cart successfully!");
   };
 
   return (
@@ -39,7 +41,7 @@ const WishlistPage = () => {
                 </button>
                 <button
                   className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200"
-                  onClick={() => dispatch(removeFromWishlist({ id: product.id }))}
+                  onClick={() => (dispatch(removeFromWishlist({ id: product.id })).then(toast.success("Removed from wishlist"))) }
                 >
                   Remove from Wishlist
                 </button>

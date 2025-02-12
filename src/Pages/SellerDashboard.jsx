@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ProductCard from '../Components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, deleteProduct, updateProduct } from '../Redux/features/ProductSlice';
 
@@ -15,7 +14,10 @@ const SellerDashboard = () => {
   const handleAddProduct = (e) => {
     e.preventDefault();
     const productPrice = parseFloat(price);
-    const imageUrl = image ? URL.createObjectURL(image) : '';
+    let imageUrl = '';
+    if (image) {
+      imageUrl = URL.createObjectURL(image);
+    }
     if (editProductId) {
       dispatch(updateProduct({ id: editProductId, title, description, price: productPrice, image: imageUrl }));
       setEditProductId(null);
@@ -33,7 +35,7 @@ const SellerDashboard = () => {
     setTitle(product.title);
     setDescription(product.description);
     setPrice(product.price.toString());
-    setImage(product.image);
+    setImage(product.image); 
   };
 
   const handleDeleteProduct = (id) => {
@@ -78,7 +80,7 @@ const SellerDashboard = () => {
             className="w-full p-2 border rounded"
           />
         </div>
-        <button type="submit" className="bg-primary text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-primary text-black px-4 py-2 rounded">
           {editProductId ? 'Update Product' : 'Add Product'}
         </button>
       </form>
@@ -95,13 +97,13 @@ const SellerDashboard = () => {
             <p className="text-lg font-semibold mb-4">${Number(product.price).toFixed(2)}</p>
             <div className="flex space-x-2">
               <button
-                className="bg-primary text-white px-4 py-2 rounded"
+                className="bg-primary text-black px-4 py-2 rounded"
                 onClick={() => handleEditProduct(product)}
               >
                 Edit
               </button>
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 text-black px-4 py-2 rounded"
                 onClick={() => handleDeleteProduct(product.id)}
               >
                 Delete

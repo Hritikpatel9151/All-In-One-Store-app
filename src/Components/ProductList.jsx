@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDebounce } from "../hooks/Debounce";
 import products from "../MokeData/products";
+import { useMemo } from "react";
 
 const ProductList = () => {
   const { search } = useSelector((state) => state.search);
   const updatedProducts = useSelector((state) => state.products.products);
-  const allProducts = Array.isArray(updatedProducts) ? updatedProducts.concat(products) : products;
+  const allProducts = useMemo(() => 
+    Array.isArray(updatedProducts) ? updatedProducts.concat(products) : products,
+    [updatedProducts] 
+  );
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
   const debouncedSearch = useDebounce(search, 500);
 

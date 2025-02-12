@@ -8,6 +8,7 @@ import ProtectedRoute from "../Components/ProtectedRoute";
 import ProductList from "../Components/ProductList";
 import CardPage from "../Components/CardPage";
 import WishlistPage from "../Components/WishlistPage";
+import Order from "../Pages/Order";
 
 const Routers = () => {
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
       <Route path="/" exact element={<Home />} />
       <Route path="/login" exact element={<Login />} />
       <Route path="/products" exact element={<ProductList />} />
+      <Route path="/order" exact element={<ProtectedRoute role="buyer" element={<Order />} />} />
       <Route
         path="/admin"
         exact

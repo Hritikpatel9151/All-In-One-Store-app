@@ -5,7 +5,7 @@ import ProductList from "../Components/ProductList";
 const HomePage = () => {
   return (
     <>
-      <div className="container bg-primary h-[80vh] w-full ">
+       <div className="container bg-primary h-[80vh] w-full ">
         <div className="text-center mb-8 ">
           <h1 className="w-[60%] text-[100px] font-extrabold text-secondry mb-4 text-start ">
             Welcome to All In One Store!
@@ -39,7 +39,7 @@ const HomePage = () => {
         <footer className="text-center p-4 bg-black text-white">
         &copy; 2023 All In One Store. All rights reserved.
         
-      </footer>
+      </footer>  update it in responsive for mobile tablet and others
     </>
   );
 };

@@ -2,6 +2,9 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa";
 import { useDispatch ,useSelector} from 'react-redux';
+import  { toast} from 'react-hot-toast';
+import CustomToastNotLoggedIn from '../CustomToast/CustomToastNotLoggedIn';
+//import {toast} from "react-hot-toast"
 //import {AuthContext} from '../Context/AuthContext';
 
 // import { CartContext } from '../Context/CardContext';
@@ -15,12 +18,17 @@ const ProductCard = ({ product }) => {
  
   
   const handleAddToWishList = () => {
+   
     dispatch(addToWishlist(product));
+    toast.success("Added to wishlist");
   }
   const handleAddToCart = () => {
+    
      dispatch(addToCart(product));
+     toast.success("Added to cart");
     
   }
+  
  
   return (
     <div className="product-card bg-white shadow-md rounded-lg p-4 m-4 hover:shadow-black transition-shadow duration-300 transform hover:scale-105">
@@ -46,8 +54,8 @@ const ProductCard = ({ product }) => {
         )}
         {!user && (
           <>
-          <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200"><Link to="/login">Add to Cart</Link></button>
-          <button className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200"><Link to="/login"> <FaHeart /></Link></button>
+          <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200" onClick={() => toast.custom(<CustomToastNotLoggedIn />)} ><Link to="/login">Add to Cart</Link></button>
+          <button className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200" onClick={() => toast.custom(<CustomToastNotLoggedIn />)}><Link to="/login"> <FaHeart /></Link></button>
           </>
         )}
        
