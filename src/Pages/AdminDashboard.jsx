@@ -17,7 +17,7 @@ const AdminDashboard = () => {
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {users.map((user) => (
           <div key={user.id} className="user-card bg-white shadow-md rounded-lg p-4 m-4 hover:shadow-black transition-shadow duration-300 transform hover:scale-105">
             <h2 className="text-xl font-bold mb-2">{user.name}</h2>

@@ -84,7 +84,7 @@ const SellerDashboard = () => {
           {editProductId ? 'Update Product' : 'Add Product'}
         </button>
       </form>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {Array.isArray(products) && products.map((product) => (
           <div key={product.id} className="product-card bg-white shadow-md rounded-lg p-4 m-4 hover:shadow-black transition-shadow duration-300 transform hover:scale-105">
             <h2 className="text-xl font-bold mb-2">{product.title}</h2>
