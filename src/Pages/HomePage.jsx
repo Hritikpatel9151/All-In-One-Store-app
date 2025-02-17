@@ -2,15 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProductList from "../Components/ProductList";
 
+
 const HomePage = () => {
   return (
     <>
      
       <div className="container bg-primary min-h-screen  w-full flex flex-col items-center p-4 md:p-8 mt-[60px]">
         {/* Hero Section */}
+       
         <div className="text-center mb-8 w-full max-w-5xl">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-extrabold text-secondary mb-4 text-left md:w-[80%]">
-            Welcome to All In One Store!<span className="lg:w-10 lg:h-10 absolute top-[33%] left-[58%] rounded-full animate-bounce bg-white "></span>
+           
+              Welcome to All In One Store!<span className="lg:w-10 lg:h-10 absolute top-[33%] left-[58%] rounded-full animate-bounce bg-white "></span>
           </h1>
           <p className="text-md md:text-lg text-gray-800 text-left md:w-[80%]">
             Discover a world of amazing products at unbeatable prices. Shop now
@@ -25,11 +28,20 @@ const HomePage = () => {
         </div>
 
         {/* Shop Now Button */}
-        <div className="w-40 md:w-48 lg:w-56 rounded-full flex items-center justify-center bg-white hover:bg-secondary hover:text-primary transition duration-200 p-3 md:p-4 absolute bottom-[15%] md:bottom-[13%] right-[50%] md:right-[45%] hover:scale-110">
-          <button>
-            <Link to="/products">Shop Now</Link>
-          </button>
-        </div>
+        <div className="w-40 md:w-48 lg:w-56 rounded-full flex items-center justify-center bg-white hover:bg-secondary hover:text-primary transition-transform duration-300 ease-in-out p-3 md:p-4 absolute bottom-[15%] md:bottom-[13%] right-[50%] md:right-[45%] hover:scale-110">
+            <button className="">
+              <div className="text-animation">
+                <span>S</span>
+                <span>h</span>
+                <span>o</span>
+                <span>p</span>
+                <span> </span>
+                <span>N</span>
+                <span>o</span>
+                <span>w</span>
+              </div>
+            </button>
+          </div>
 
         {/* Animated Floating Circles */}
         <div className="relative w-full max-w-5xl">
@@ -37,7 +49,7 @@ const HomePage = () => {
           <span className="lg:w-16 lg:h-16 absolute left-[10%] rounded-full bg-black md:bottom-[100px] "></span>
           <span className="lg:w-12 lg:h-12 absolute left-[11%] rounded-full animate-bounce bg-white md:bottom-[100px]"></span>
         </div>
-
+       
         {/* Featured Products */}
         <div className="flex flex-col mt-16 w-full max-w-5xl px-4">
           <h2 className="text-center text-xl md:text-2xl font-bold text-secondary">
@@ -48,7 +60,7 @@ const HomePage = () => {
 
         {/* Footer */}
         <footer className="text-center p-4 bg-black text-white w-full mt-10">
-          &copy; 2023 All In One Store. All rights reserved.
+          &copy; 2025 All In One Store. All rights reserved.
         </footer>
       </div>
     </>
