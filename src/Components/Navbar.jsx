@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-primary p-4 flex items-center justify-center ">
+    <div className="fixed top-0 left-0 right-0 bg-primary p-4 flex items-center justify-center z-50">
       <nav className="container flex mx-auto flex-col md:flex-row lg:justify-between">
         <ul className=" space-x-6 text-xl mb-4 md:mb-0  ">
           <li>
@@ -77,7 +77,7 @@ const Navbar = () => {
       {/* mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-primary p-4 mt-2">
-        <div className=" absolute top-[80px] right-40 w-48 mt-2 md:block">
+        <div className="  w-48 mt-2 md:block">
           <SearchBar />
         </div>
           <ul className="flex flex-col space-y-4 ">

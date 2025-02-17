@@ -14,8 +14,8 @@ const WishlistPage = () => {
   };
 
   return (
-    <div className="p-6 ">
-      <h2 className="text-2xl font-bold mb-4">Wishlist of User</h2>
+    <div className="p-6 mt-[60px] ">
+      <h2 className="text-2xl font-bold mb-4 ">Wishlist of User</h2>
       {wishlist.length === 0 ? (
         <p className="text-gray-500">Your wishlist is empty.</p>
       ) : (
