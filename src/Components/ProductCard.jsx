@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
       <p className="text-lg font-semibold mb-4">${Number(product.price).toFixed(2)}</p>
       <div className="flex space-x-2">
       
-        {user && (
+        {user && user.role === "user" && (
           <>
             <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200"
             onClick={handleAddToCart}
@@ -59,6 +59,17 @@ const ProductCard = ({ product }) => {
           </>
         )}
        
+       {user && user.role === "admin" && user.role === "seller" && (
+          <>
+          <div className="bg-white rounded-lg shadow-md p-4 m-4 transform duration-500 hover:translate-x-5 hover:-translate-y-5 hover:shadow-black">
+      <h2 className="text-xl font-bold mb-2">{product.title}</h2>
+      <p className="text-gray-700 mb-4">{product.description}</p>
+      <img src={product.image} alt={product.title} className=" h-48 object-cover mb-4 w-full rounded" />
+      <p className="text-lg font-semibold mb-4">${Number(product.price).toFixed(2)}</p>
+      </div>
+          </>
+      
+       )}
         {/* <button className="bg-primary text-[17px] text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-primary transition duration-200">Add to Cart</button>
         <button className="bg-secondary text-white px-4 py-2 rounded hover:bg-primary hover:text-secondary transition duration-200">Add to WishList</button> */}
       </div>

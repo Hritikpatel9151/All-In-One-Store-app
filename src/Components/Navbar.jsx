@@ -55,7 +55,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/wishlist" className="text-textcolor"><FaHeart className='text-xl inline-block gap-2' />Wishlist
+                <Link to="/wishlist" className="text-textcolor"><FaHeart className='text-xl inline-block gap-2' />
                 <sup className='text-sm font-bold bg-white text-black p-1 rounded-full '>
               {wishlistCount}        
                 </sup>
@@ -76,7 +76,7 @@ const Navbar = () => {
       </nav>
       {/* mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-primary p-4 mt-2">
+        <div className="lg:hidden bg-primary p-4 mt-2">
         <div className="  w-48 mt-2 md:block">
           <SearchBar />
         </div>

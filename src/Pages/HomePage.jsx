@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import ProductList from "../Components/ProductList";
 
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <>
      
@@ -28,8 +29,8 @@ const HomePage = () => {
         </div>
 
         {/* Shop Now Button */}
-        <div className="w-40 md:w-48 lg:w-56 rounded-full flex items-center justify-center bg-white hover:bg-secondary hover:text-primary transition-transform duration-300 ease-in-out p-3 md:p-4 absolute bottom-[15%] md:bottom-[13%] right-[50%] md:right-[45%] hover:scale-110">
-            <button className="">
+        <div className="w-40 md:w-48 lg:w-56  rounded-full flex items-center justify-center bg-white hover:bg-secondary hover:text-primary transition-transform duration-300 ease-in-out p-3 lg:p-4 absolute bottom-[15%] lg:bottom-[13%] right-[50%] lg:right-[45%] hover:scale-110 ">
+            <button className="" onClick={() => navigate("/products")}>
               <div className="text-animation">
                 <span>S</span>
                 <span>h</span>
